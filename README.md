@@ -52,7 +52,7 @@ GITHUB_API_ACCESS_TOKEN には各自の適切な値と置き換えます。保�
 
 # forge を使ってみる
 
-forge は magit のサブモジュールなので、基本的に magit-status バッファを開いてから操作します。 `M-x magit-status` を実行してください。
+forge は magit のサブモジュールなので、基本的に magit-status バッファを開いてから操作します。forge を使う上で、ブランチを作ったり、プッシュしたりすることがありますが、それらは magit の操作なので説明を省きます。
 
 ## issue の作成
 
@@ -85,3 +85,9 @@ issue を作成したあとに magit-status に戻ってくると Issues とい�
 <img src="https://github.com/eggc/forge-test/blob/master/img/show-issue-edited.png?raw=true">
 
 forge はマイルストーンや、プロジェクトの機能には対応していないので、それらを編集したい場合は `C-c C-o` を入力し、 issue をブラウザで開きます。
+
+## プルリクエストの作成
+
+forge はプルリクエストに対応しており、当然 fork してからプルリクエストを作ることもできるのですが、一人で実験することは難しいので、今回は一つのリポジトリにブランチを増やして、それをプルリクエストするやり方を紹介します。
+
+プルリクエストを作成するために、まずは適当なブランチを push します。今回は feature-test というブランチを増やして、これを push します。さらにコミットをいくつか積み上げます。
