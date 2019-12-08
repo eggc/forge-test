@@ -18,9 +18,7 @@ use-package を使っている場合は下記のコードにします。
   :after magit)
 ```
 
-その後、Github にログインし適当なリポジトリを作り、チェックアウトします。今回は [forge-test](https://github.com/eggc/forge-test) というリポジトリを作ってみることにします。もちろん、既存のリポジトリがあるなら git clone でチェックアウトしても問題ありません。
-
-次に `M-x forge-pull` を実行します。初めて利用するときには下記のメッセージが表示されます。
+その後、Github にログインし適当なリポジトリを作り、チェックアウトします。今回は [forge-test](https://github.com/eggc/forge-test) というリポジトリを作ってみることにします。もちろん、既存のリポジトリがあるなら git clone でチェックアウトしても問題ありません。`M-x magit-status` で forge-test を開いた後に `M-x forge-pull` を実行します。初めて利用するときには下記のメッセージが表示されます。
 
 <img src="https://github.com/eggc/forge-test/blob/master/img/github-token-not-found.png?raw=true">
 
@@ -51,3 +49,15 @@ machine api.github.com login eggc^forge password GITHUB_API_ACCESS_TOKEN
 ```
 
 GITHUB_API_ACCESS_TOKEN には各自の適切な値と置き換えます。保存できたら、改めて M-x forge-pull を実行します。これで無事トークンが使われるようになりました。
+
+# forge を使ってみる
+
+forge は magit のサブモジュールなので、基本的に magit-status バッファを開いてから操作します。 `M-x magit-status` を実行してください。
+
+## issue の作成
+
+まずは issue を作成してみます。forge が正しくロードされ、初期設定を終えていれば `' c i` で新しい issue を作成するためのバッファが開かれます。これをたとえば下のように編集します。
+
+<img src="https://github.com/eggc/forge-test/blob/master/img/new-issue.png?raw=true">
+
+最後に `C-c C-c` で Github に投稿します。もし投稿したくない場合は `C-c C-k` で取り消す事ができます。取り消した内容は記憶されていて、再度 issue を作ろうとしたときに復元されます。
