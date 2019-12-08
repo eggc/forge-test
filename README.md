@@ -52,7 +52,7 @@ GITHUB_API_ACCESS_TOKEN には各自の適切な値と置き換えます。保�
 
 # forge を使ってみる
 
-forge は magit のサブモジュールなので、基本的に magit-status バッファを開いてから操作します。 `M-x magit-status` を実行してください。
+forge は magit のサブモジュールなので、基本的に magit-status バッファを開いてから操作します。forge を使う上で、ブランチを作ったり、プッシュしたりすることがありますが、それらは magit の操作なので説明を省きます。
 
 ## issue の作成
 
@@ -64,7 +64,7 @@ forge は magit のサブモジュールなので、基本的に magit-status �
 
 ## issue の表示・編集
 
-issue を作成したあとに magit-status に戻ってくると Issues というセクションが追加されており、ここに追加した issue が表示されるようになります。
+issue を作成したあとに magit-status に戻ってくると Issues というセクションが追加されており、ここに追加した issue が表示されるようになります。折り畳まれている場合はカーソルを当てて `TAB` で開閉します。
 
 <img src="https://github.com/eggc/forge-test/blob/master/img/magit-status-issues.png?raw=true">
 
@@ -78,8 +78,51 @@ issue を作成したあとに magit-status に戻ってくると Issues とい�
 - State: open 状態なら close します。close 状態なら reopen します。y/n で入力を求められます。
 - Labels: ラベルを入力します。事前にラベルの種類（デフォルトでは bug, enhancement など）を決めておく必要があります。カンマ区切りで入力すると、複数のラベルをセットすることができます。一個だけ入力した場合は追加ではなく、上書きになるので注意が必要です。ラベルの色は Github で設定した色と同じになります。
 - Marks: マークを入力します。事前に forge-create-mark でマークを作っておく必要があります。マークはラベルと似た仕組みですが、Github の持っている機能ではなく、forge が独自に導入しているもので、他の人と共有しないラベルです。
-- Assignees: issue の担当者を入力します。github アカウント名を入力します。
+- Assignees: issue の担当者を入力します。Github アカウント名を入力します。
 
-すべて操作した結果、下のようになりました。
+本文も同様にして変更できます。すべて操作した結果、下のようになりました。
 
 <img src="https://github.com/eggc/forge-test/blob/master/img/show-issue-edited.png?raw=true">
+
+forge はマイルストーンや、プロジェクトの機能には対応していないので、それらを編集したい場合は `C-c C-o` を入力し、 issue をブラウザで開きます。
+
+## プルリクエストの作成
+
+forge はプルリクエストに対応しており、当然 fork してからプルリクエストを作ることもできるのですが、一人で実験することは難しいので、今回は一つのリポジトリにブランチを増やして、それをプルリクエストするやり方を紹介します。
+
+プルリクエストを作成するために、まずは適当なブランチを push します。今回は feature-test というブランチを増やして、これを push します。さらにコミットをいくつか積み上げ、それも push します。magit-refs は下のようになります。ここまでは magit の操作だけです。
+
+<img src="https://github.com/eggc/forge-test/blob/master/img/magit-refs.png?raw=true">
+
+さて、ブランチ feature-test を master に向けてプルリクエストを作ります。 `' c p` と入力します。
+
+<img src="https://github.com/eggc/forge-test/blob/master/img/pullreq-source-branch.png?raw=true">
+<img src="https://github.com/eggc/forge-test/blob/master/img/pullreq-target-branch.png?raw=true">
+
+それぞれ入力したあと、新しいプルリクエストのタイトルと本文を書き込むためのバッファが開きます。タイトルは自動的に最後のコミットメッセージになっています。
+
+<img src="https://github.com/eggc/forge-test/blob/master/img/pullreq-create-message.png?raw=true">
+
+最後に `C-c C-c` で Github に投稿します。ここは issue の作成と全くどうように `C-c C-k` で取り消す事ができます。取り消した内容は記憶されていて、復元するか破棄するかの操作も同じです。`r` で復元し `d` で破棄します。github のテンプレート機能にも対応している、という点も全く同じです。
+
+## プルリクエストの表示・編集
+
+プルリクエスト作成が済んだあと magit-status へ戻ってくると pull requests というセクションが追加されています。
+
+<img src="https://github.com/eggc/forge-test/blob/master/img/magit-status-pull-requests.png?raw=true">
+
+これも issue と同様です。カーソルをあてて `RET` を押すとプルリクエストの詳細を見ることができます。
+
+<img src="https://github.com/eggc/forge-test/blob/master/img/show-pull-request.png?raw=true">
+
+ここもカーソルを当てて `C-c C-e` で各項目を編集できます。
+
+- Title: タイトルを編集します。
+- State: open 状態なら close します。close 状態なら reopen します。y/n で入力を求められます。
+- Refs: 編集できません。
+- Labels: ラベルを入力します。詳細は issue と全く同じです。
+- Marks: マークを入力します。詳細は issue と全く同じです。
+- Assignees: 担当者を入力します。
+- Review-Requests: レビュアーを入力します。Github アカウント名を入力します。カンマ区切りで複数のレビュアーをセットできます。
+
+本文も同様にして変更できます。残念ながらここでレビューをしたりコメントしたりする機能はありません。 `C-c C-o` を使ってブラウザで、該当するプルリクエストのページを開きます。
