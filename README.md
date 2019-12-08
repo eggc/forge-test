@@ -64,7 +64,7 @@ forge は magit のサブモジュールなので、基本的に magit-status �
 
 ## issue の表示・編集
 
-issue を作成したあとに magit-status に戻ってくると Issues というセクションが追加されており、ここに追加した issue が表示されるようになります。
+issue を作成したあとに magit-status に戻ってくると Issues というセクションが追加されており、ここに追加した issue が表示されるようになります。折り畳まれている場合はカーソルを当てて `TAB` で開閉します。
 
 <img src="https://github.com/eggc/forge-test/blob/master/img/magit-status-issues.png?raw=true">
 
@@ -104,3 +104,13 @@ forge はプルリクエストに対応しており、当然 fork してから�
 <img src="https://github.com/eggc/forge-test/blob/master/img/pullreq-create-message.png?raw=true">
 
 最後に `C-c C-c` で Github に投稿します。ここは issue の作成と全くどうように `C-c C-k` で取り消す事ができます。取り消した内容は記憶されていて、復元するか破棄するかの操作も同じです。`r` で復元し `d` で破棄します。github のテンプレート機能にも対応している、という点も全く同じです。
+
+## プルリクエストの表示・編集
+
+プルリクエスト作成が済んだあと magit-status へ戻ってくると pull requests というセクションが追加されています。
+
+<img src="https://github.com/eggc/forge-test/blob/master/img/magit-status-pull-requests.png?raw=true">
+
+これも issue と同様です。カーソルをあてて `RET` を押すとプルリクエストの詳細を見ることができます。
+
+<img src="https://github.com/eggc/forge-test/blob/master/img/show-pull-request.png?raw=true">
