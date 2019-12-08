@@ -60,4 +60,4 @@ forge は magit のサブモジュールなので、基本的に magit-status �
 
 <img src="https://github.com/eggc/forge-test/blob/master/img/new-issue.png?raw=true">
 
-最後に `C-c C-c` で Github に投稿します。もし投稿したくない場合は `C-c C-k` で取り消す事ができます。取り消した内容は記憶されていて、再度 issue を作ろうとしたときに復元されます。
+最後に `C-c C-c` で Github に投稿します。もし投稿したくない場合は `C-c C-k` で取り消す事ができます。取り消した内容は記憶されていて、再度 issue を作ろうとしたときに復元するかどうか質問されます。`r` で復元し `d` で破棄します。なお、github のテンプレート機能にも対応しています。具体的には、リポジトリに .github/ISSUE_TEMPLATE ファイルがあった場合、それが issue 作成バッファが新規作成されたときの内容になります。
