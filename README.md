@@ -61,3 +61,25 @@ forge は magit のサブモジュールなので、基本的に magit-status �
 <img src="https://github.com/eggc/forge-test/blob/master/img/new-issue.png?raw=true">
 
 最後に `C-c C-c` で Github に投稿します。もし投稿したくない場合は `C-c C-k` で取り消す事ができます。取り消した内容は記憶されていて、再度 issue を作ろうとしたときに復元するかどうか質問されます。`r` で復元し `d` で破棄します。なお、github のテンプレート機能にも対応しています。具体的には、リポジトリに .github/ISSUE_TEMPLATE ファイルがあった場合、それが issue 作成バッファが新規作成されたときの内容になります。
+
+## issue の表示・編集
+
+issue を作成したあとに magit-status に戻ってくると Issues というセクションが追加されており、ここに追加した issue が表示されるようになります。
+
+<img src="https://github.com/eggc/forge-test/blob/master/img/magit-status-issues.png?raw=true">
+
+ここで、さっき作成した #1 の issue にカーソルをあてて `RET` を押すと issue の詳細を見ることができます。
+
+<img src="https://github.com/eggc/forge-test/blob/master/img/show-issue.png?raw=true">
+
+内容に不足があり、再度編集したい場合には `C-c C-e` を入力すると、編集する事ができます。カーソルが Title, State, Labels, Marks, Assignees に当たっている場合は、その項目が編集対象になります。
+
+- Title: タイトルを編集します。
+- State: open 状態なら close します。close 状態なら reopen します。y/n で入力を求められます。
+- Labels: ラベルを入力します。事前にラベルの種類（デフォルトでは bug, enhancement など）を決めておく必要があります。カンマ区切りで入力すると、複数のラベルをセットすることができます。一個だけ入力した場合は追加ではなく、上書きになるので注意が必要です。ラベルの色は Github で設定した色と同じになります。
+- Marks: マークを入力します。事前に forge-create-mark でマークを作っておく必要があります。マークはラベルと似た仕組みですが、Github の持っている機能ではなく、forge が独自に導入しているもので、他の人と共有しないラベルです。
+- Assignees: issue の担当者を入力します。github アカウント名を入力します。
+
+すべて操作した結果、下のようになりました。
+
+<img src="https://github.com/eggc/forge-test/blob/master/img/show-issue-edited.png?raw=true">
