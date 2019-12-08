@@ -83,3 +83,5 @@ issue を作成したあとに magit-status に戻ってくると Issues とい�
 すべて操作した結果、下のようになりました。
 
 <img src="https://github.com/eggc/forge-test/blob/master/img/show-issue-edited.png?raw=true">
+
+forge はマイルストーンや、プロジェクトの機能には対応していないので、それらを編集したい場合は `C-c C-o` を入力し、 issue をブラウザで開きます。
