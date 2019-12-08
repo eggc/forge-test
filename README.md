@@ -90,4 +90,17 @@ forge はマイルストーンや、プロジェクトの機能には対応し�
 
 forge はプルリクエストに対応しており、当然 fork してからプルリクエストを作ることもできるのですが、一人で実験することは難しいので、今回は一つのリポジトリにブランチを増やして、それをプルリクエストするやり方を紹介します。
 
-プルリクエストを作成するために、まずは適当なブランチを push します。今回は feature-test というブランチを増やして、これを push します。さらにコミットをいくつか積み上げます。
+プルリクエストを作成するために、まずは適当なブランチを push します。今回は feature-test というブランチを増やして、これを push します。さらにコミットをいくつか積み上げ、それも push します。magit-refs は下のようになります。ここまでは magit の操作だけです。
+
+<img src="https://github.com/eggc/forge-test/blob/master/img/magit-refs.png?raw=true">
+
+さて、ブランチ feature-test を master に向けてプルリクエストを作ります。 `' c p` と入力します。
+
+<img src="https://github.com/eggc/forge-test/blob/master/img/pullreq-source-branch.png?raw=true">
+<img src="https://github.com/eggc/forge-test/blob/master/img/pullreq-target-branch.png?raw=true">
+
+それぞれ入力したあと、新しいプルリクエストのタイトルと本文を書き込むためのバッファが開きます。タイトルは自動的に最後のコミットメッセージになっています。
+
+<img src="https://github.com/eggc/forge-test/blob/master/img/pullreq-create-message.png?raw=true">
+
+最後に `C-c C-c` で Github に投稿します。ここは issue の作成と全くどうように `C-c C-k` で取り消す事ができます。取り消した内容は記憶されていて、復元するか破棄するかの操作も同じです。`r` で復元し `d` で破棄します。github のテンプレート機能にも対応している、という点も全く同じです。
